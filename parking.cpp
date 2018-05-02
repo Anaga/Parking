@@ -56,8 +56,8 @@ QString Parking::print_parking_list()
     car curCar;
     for (int i=0; i<m_current_size; i++){
         curCar = m_parking_list.at(i);
-        qDebug() << "curCar at " << i << " have reg NR "<< curCar.regNumber.toLocal8Bit();
+        //qDebug() << "curCar at " << i << " have reg NR "<< curCar.regNumber.toLocal8Bit();
         qsTemp += curCar.regNumber;
     }
-    return curCar.regNumber;
+    return qsTemp;
 }
