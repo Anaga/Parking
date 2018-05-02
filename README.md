@@ -26,3 +26,17 @@ int add_car(QString regNumber);
 int remove_car(QString regNumber);
 QString print_parking_list();
 ```
+
+
+Home task:
+
+In file parking.cpp, 
+in function 
+int Parking::add_car(QString regNumber)
+1) add check for Registation Number format.
+Format shall be 3 capital leters from A-Z, and then 3 numbrs.
+
+2) add regNumber to parking_list only if this number NOT in list, and parking lot is not full - less than 25.
+
+
+Write a new test case in file tst_testparkingtest.cpp to VERIFY fuction add_car.
