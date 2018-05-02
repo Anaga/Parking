@@ -1,7 +1,7 @@
 # Parking
 Application for big parking lot.
 
-We will use QList<car> for holding cars on parking lot.
+We will use QList'<car'> for holding cars on parking lot.
 Cars it is a struct:
 ```
 typedef struct {
