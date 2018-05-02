@@ -1,0 +1,55 @@
+Clone with SSH 
+Use an SSH key and passphrase from account
+git@github.com:Anaga/Parking.git
+
+Clone with HTTPS 
+Use Git or checkout with SVN using the web URL.
+https://github.com/Anaga/Parking.git
+
+
+1) Open git CMD, go to good location, make new folder
+>cd 
+>mkdir
+
+2) Clone repository Parling
+>git clone git@github.com:Anaga/Parking.git  (SSH acces)
+or 
+>git clone https://github.com/Anaga/Parking.git (HTTPS acces)
+
+3) Make some local chenges
+add your name to README.md
+
+4) Commit changes to local repository
+>git commit -m "Some commit"
+
+5) Pull (download and apply) changes from remote
+>git pull
+
+5) Push from local to remote
+>git push origin master
+
+
+#SSH config:
+$ ls -al ~/.ssh
+
+ssh-keygen -t rsa -C "bobyrev.bob@gmail.com" -b 4096
+
+aq123
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCrY/0b3m6HUWJJ9jJQZVgMqI8ESYnvDm6BZ4SnqfKka6XRvIPMkABw2pNMbmJ0YUO5cEcFepnmmzdlatfpyM1VxdsuyyhjcDBn5/bLo1cvykPU6Md9zQpjUw5gptHi+/PskgU2IcsFrFyyKm184BQnOJAjM/PytZt/JJlhn3Xgha5anNiTp68yKtsNHVW109iM4WMCeHATomqf3PGw6If0itfAsrRf6eEFoDYBuwCCPFihL6lWyzXyZo6Ovw30dQfKk6KrKXkh687859WWWwpvYnU/xpMz+nA/09aD85w55LqvUfakxsBmLi2SVnbafo3sYbjkT0889b4n3sYd3Q/gbBotrA1is3zdkbBO1Vb+gZ5LBTtsTgm/RguSzbybv7x2+xjI4xuLNKm8AmnaBSTs2GkDErouiihWN/V6c5C8pQcql3o+O8/o9/aDL5IVnvcuBjYIHXvlnooWoonElfFowVz254kMxHGVw0oAfqFs8PWRf4teOd6trKeHqABSUPLZJjUh6dQp3EejjUPxx+Nr525ubojre2pZsuQhzfd1XEDHLQHEGe/V9vBOmjh5R6ssqIW708X10XMLhl8jFbeFgrLxhsvXk5eHHH1zj0C1GrlWEzpa2LBPHwQn5OS+spWwoCt6xxjQaKpN59HbC0aqN4DKzxDVrcul1/BozWwsrw== bobyrev.bob@gmail.com
+
+Your public key has been saved in /y//.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:/zK1O5HkR8G0d9GKLV37PYRkQspIAmfwZFVP9euCYZw bobyrev.bob@gmail.com
+The key's randomart image is:
++---[RSA 4096]----+
+|   oo*.o...o.+...|
+|    * o o +. o+.+|
+|     . . o .++o=+|
+|          . =.=+o|
+|        S  E +..o|
+|         .. B o.o|
+|          .o = ..|
+|          o.o .  |
+|           ooo   |
++----[SHA256]-----+
