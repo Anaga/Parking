@@ -32,3 +32,6 @@ DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
 HEADERS += \
     parking.h
+
+DISTFILES += \
+    README.md
