@@ -34,4 +34,5 @@ HEADERS += \
     parking.h
 
 DISTFILES += \
-    README.md
+    README.md \
+    Notes.txt
