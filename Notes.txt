@@ -34,6 +34,8 @@ add your name to README.md
 8) Check logs
 >git log 
 
+
+
 #SSH config:
 $ ls -al ~/.ssh
 
