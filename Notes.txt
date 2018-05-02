@@ -1,3 +1,6 @@
+Good book for git command in Russian - https://git-scm.com/book/ru/v1
+
+
 Clone with SSH 
 Use an SSH key and passphrase from account
 git@github.com:Anaga/Parking.git
@@ -40,7 +43,7 @@ add your name to README.md
 $ ls -al ~/.ssh
 
 ssh-keygen -t rsa -C "bobyrev.bob@gmail.com" -b 4096 aq123
-ssh-rsa AAAAB3mqf3PGw6If0itfAsrRf6eEFoDYBuwCCPFihL6lWyzXyZo6Ovw30dQfKk6KrKXkh687859WWWwpvYnU/xpMz+nA/09aD85w55LqvUfakxsBmLi2SVnbafo3sYbjkT0889b4n3sYd3Q/gbBotrA1is3zdkbBO1Vb+gZ5LBTtsTgm/RguSzbybv7x2+xjI4xuLNKm8AmnaBSTs2GkDErouiihWN/V6c5C8pQcql3o+O8/o9/aDL5IVnvcuBjYIHXvlnooWoonElfFowVz254kMxHGVw0oAfqFs8PWRf4teOd6trKeHqABSUPLZJjUh6dQp3EejjUPxx+Nr525ubojre2pZsuQhzfd1XEDHLQHEGe/V9vBOmjh5R6ssqIW708X10XMLhl8jFbeFgrLxhsvXk5eHHH1zj0C1GrlWEzpa2LBPHwQn5OS+spWwoCt6xxjQaKpN59HbC0aqN4DKzxDVrcul1/BozWwsrw== bobyrev.bob@gmail.com
+ssh-rsa AAAAB3mqf3PGw6If0itfAsrRf6eEFoDYBuwCCPFihL6lWyzXyZo6Ovw30dQfKk6KrKXkh687859WWWwpvYnU/xpMz+nA/09aD85w55LqvUfakxsBmLi2SVnbafo3sYbjkT0889b4n3sYd3Q/gb
 
 Your public key has been saved in /y//.ssh/id_rsa.pub.
 The key fingerprint is:
