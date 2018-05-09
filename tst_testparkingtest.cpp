@@ -64,16 +64,13 @@ void TestParkingTest::testCaseAddAndDeleteTwoCars()
     QVERIFY2( parking.size()==0, "Empty parking is not empty!");
 }
 
-
 void TestParkingTest::testCaseAddWrongCarsNumbers()
 {
-    QString regNumb = "ABC123456";
-
+    QString regNumb = "ABC1234";
     Parking parking;
 
     QVERIFY2( parking.add_car(regNumb)==0, "Adding car seccesfully with long reg number");
-
-    regNumb = "DE4588";
+    regNumb = "DE45";
     QVERIFY2( parking.add_car(regNumb)==0, "Adding car seccesfully with short reg number");
 
 
@@ -81,13 +78,21 @@ void TestParkingTest::testCaseAddWrongCarsNumbers()
     QVERIFY2( parking.print_parking_list()=="", "Parking list after 2 wrong  cars rec numbers is not empty");
     QVERIFY2( parking.size()==0, "Empty parking is not empty!");
 
-    QEXPECT_FAIL("", "Will fix in the next release", Continue);
-    regNumb = "ABC-124";
+    regNumb = "ABC-124----";
     QVERIFY2( parking.add_car(regNumb)==0, "Adding car seccesfully with minus sign reg number");
+
+    regNumb = "ABC+124";
+    QVERIFY2( parking.add_car(regNumb)==0, "Adding car seccesfully with minus sign reg number");
+
+    qDebug() << " print_parking_list have this value: "<< parking.print_parking_list();
+
+    QEXPECT_FAIL("", "Will fix in the next release", Continue);
+    regNumb = "+-+-+-";
+    QVERIFY2( parking.add_car(regNumb)==0, "Adding car seccesfully with +-+-+- reg number");
+
+    QEXPECT_FAIL("", "Will fix in the next release", Continue);
     regNumb = "abcdef";
     QVERIFY2( parking.add_car(regNumb)==0, "Adding car seccesfully with small letters reg number");
-
-
 }
 
 QTEST_APPLESS_MAIN(TestParkingTest)
