@@ -64,3 +64,14 @@ QString Parking::print_parking_list()
     }
     return qsTemp;
 }
+
+bool Parking::is_car_exist(QString regNumber)
+{
+    if (m_current_size==0) return false;
+    car curCar;
+    for (int i=0; i<m_current_size; i++){
+        curCar = m_parking_list.at(i);
+        if (curCar.regNumber == regNumber) return true;
+    }
+    return false;
+}

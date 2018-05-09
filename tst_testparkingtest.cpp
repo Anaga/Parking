@@ -14,6 +14,7 @@ private Q_SLOTS:
     void testCaseAddAndDeleteOneCar();
     void testCaseAddAndDeleteTwoCars();
     void testCaseAddWrongCarsNumbers();
+    void testCaseIsCarOnEmptyParking();
 };
 
 TestParkingTest::TestParkingTest()
@@ -62,6 +63,15 @@ void TestParkingTest::testCaseAddAndDeleteTwoCars()
 
     QVERIFY2( parking.print_parking_list()=="", "Parking list after remove all 2 cars is not empty");
     QVERIFY2( parking.size()==0, "Empty parking is not empty!");
+}
+
+void TestParkingTest::testCaseIsCarOnEmptyParking(){
+    Parking parking;
+    QString regNumb = "ABC123";
+    QVERIFY2(parking.is_car_exist(regNumb)== false, "car exist in empty paring");
+    parking.add_car(regNumb);
+    QVERIFY2(parking.is_car_exist(regNumb)== true, "Now car ABC124 exist in paring");
+
 }
 
 void TestParkingTest::testCaseAddWrongCarsNumbers()

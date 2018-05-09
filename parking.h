@@ -29,6 +29,7 @@ public:
     int add_car(QString regNumber);
     int remove_car(QString regNumber);
     QString print_parking_list();
+    bool is_car_exist(QString regNumber);
 
 
 
