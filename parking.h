@@ -30,6 +30,7 @@ public:
     int remove_car(QString regNumber);
     QString print_parking_list();
     bool is_car_exist(QString regNumber);
+    car get_car_by_number(QString regNumber);
 
 
 

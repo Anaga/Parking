@@ -76,8 +76,8 @@ QString Parking::print_parking_list()
         curCar = m_parking_list.at(i);
         //qDebug() << "curCar at " << i << " have reg NR "<< curCar.regNumber.toLocal8Bit();
         qsTemp += curCar.regNumber;
-        qsTemp += " time:";
-        qsTemp += curCar.enterTime.toString("dd.MM.yyyy hh:mm:ss ");
+       // qsTemp += " time:";
+       // qsTemp += curCar.enterTime.toString("dd.MM.yyyy hh:mm:ss ");
     }
     return qsTemp;
 }
@@ -91,4 +91,18 @@ bool Parking::is_car_exist(QString regNumber)
         if (curCar.regNumber == regNumber) return true;
     }
     return false;
+}
+
+car Parking::get_car_by_number(QString regNumber)
+{
+    car curCar;
+
+    for (int i=0; i<m_current_size; i++){
+        curCar = m_parking_list.at(i);
+        if (curCar.regNumber==regNumber){
+            return curCar;
+        }
+    }
+    curCar.regNumber= "No car";
+    return curCar;
 }

@@ -15,6 +15,7 @@ private Q_SLOTS:
     void testCaseAddAndDeleteTwoCars();
     void testCaseAddWrongCarsNumbers();
     void testCaseIsCarOnEmptyParking();
+    void testCaseGetCars();
 };
 
 TestParkingTest::TestParkingTest()
@@ -114,6 +115,35 @@ void TestParkingTest::testCaseAddWrongCarsNumbers()
     regNumb = "abcdef";
     QVERIFY2( parking.add_car(regNumb)==0, "Adding car seccesfully with small letters reg number");
 }
+
+void TestParkingTest::testCaseGetCars()
+{
+    QString regNumb = "ABC123";
+    Parking parking;
+
+    parking.add_car(regNumb);
+    regNumb = "ABC124";
+    parking.add_car(regNumb);
+    qDebug() << " print_parking_list have this value: "<< parking.print_parking_list();
+
+    QVERIFY2( parking.print_parking_list()=="ABC123ABC124","Now car ABC124 exist in paring");
+
+    car testCar;
+    testCar = parking.get_car_by_number("ABC123");
+    qDebug() << " testCar.regNumber " << testCar.regNumber;
+
+    QVERIFY2("ABC123" ==testCar.regNumber, "test car not ABC123");
+    qDebug() << testCar.enterTime.toString("dd.MM.yyyy hh:mm:ss ");
+
+    testCar = parking.get_car_by_number("BBC123");
+    qDebug() << " testCar.regNumber " << testCar.regNumber;
+
+    QVERIFY2("No car" ==testCar.regNumber, "test car not *No car*, shall be ukniw");
+
+
+
+}
+
 
 QTEST_APPLESS_MAIN(TestParkingTest)
 
