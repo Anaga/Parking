@@ -30,7 +30,7 @@ void TestParkingTest::testCaseEmptyParking()
 
 void TestParkingTest::testCaseAddAndDeleteOneCar()
 {
-    QString regNumb = "ABC123";
+    QString regNumb = "ABC589";
     Parking parking;
 
     QVERIFY2( parking.add_car(regNumb), "Adding car unseccesfully");
