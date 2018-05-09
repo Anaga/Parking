@@ -35,9 +35,13 @@ void TestParkingTest::testCaseAddAndDeleteOneCar()
     Parking parking;
 
     QVERIFY2( parking.add_car(regNumb), "Adding car unseccesfully");
-    QVERIFY2( parking.print_parking_list()==regNumb, "Parking list is not ABC123");
+    qDebug() <<  parking.print_parking_list();
+    QVERIFY2( parking.print_parking_list().contains(regNumb), "Parking list is not ABC123");
+    QVERIFY2( parking.size()==1, "parking size is not 1!");
 
-    QVERIFY2( parking.remove_car("ABC123"), "Deliting car unseccesfully");
+    QVERIFY2( parking.remove_car("ABC589"), "Deliting car unseccesfully");
+    QVERIFY2( parking.size()==0, "Empty parking is not empty!");
+    qDebug() <<  parking.print_parking_list();
     QVERIFY2( parking.print_parking_list()=="", "Parking list after remove is not empty");
     QVERIFY2( parking.size()==0, "Empty parking is not empty!");
 }
@@ -51,6 +55,7 @@ void TestParkingTest::testCaseAddAndDeleteTwoCars()
 
     QsExpectedResults +=regNumb;
     QVERIFY2( parking.add_car(regNumb), "Adding first car unseccesfully");
+    qDebug() << " print_parking_list have this value: "<< parking.print_parking_list();
 
     regNumb = "DEF456";
     QsExpectedResults +=regNumb;
@@ -59,10 +64,15 @@ void TestParkingTest::testCaseAddAndDeleteTwoCars()
     QVERIFY2( parking.print_parking_list()==QsExpectedResults, "parking list is not ABC123DEF456");
 
     QVERIFY2( parking.remove_car(regNumb), "Deliting first car unseccesfully");
+    qDebug() << " print_parking_list have this value: "<< parking.print_parking_list();
+
     QVERIFY2( parking.remove_car("ABC123"), "Deliting second car unseccesfully");
+    qDebug() << " print_parking_list have this value: "<< parking.print_parking_list();
 
     QVERIFY2( parking.print_parking_list()=="", "Parking list after remove all 2 cars is not empty");
     QVERIFY2( parking.size()==0, "Empty parking is not empty!");
+    qDebug() << " print_parking_list have this value: "<< parking.print_parking_list();
+
 }
 
 void TestParkingTest::testCaseIsCarOnEmptyParking(){

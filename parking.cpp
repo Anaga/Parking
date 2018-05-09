@@ -30,6 +30,7 @@ int Parking::add_car(QString regNumber)
         }
 
     car newCar;
+    newCar.enterTime = QDateTime::currentDateTime();
     newCar.regNumber=regNumber;
     m_parking_list.append(newCar);
     m_current_size = m_parking_list.size();
@@ -61,10 +62,10 @@ int Parking::remove_car(QString regNumber)
     }
     if (deletIndex>=0) {
         m_parking_list.removeAt(deletIndex);
-    }
-
-    m_current_size = m_parking_list.size();
-    return 1;
+        m_current_size = m_parking_list.size();
+        return 1;
+    }    
+    return 0;
 }
 
 QString Parking::print_parking_list()
@@ -75,6 +76,8 @@ QString Parking::print_parking_list()
         curCar = m_parking_list.at(i);
         //qDebug() << "curCar at " << i << " have reg NR "<< curCar.regNumber.toLocal8Bit();
         qsTemp += curCar.regNumber;
+        qsTemp += " time:";
+        qsTemp += curCar.enterTime.toString("dd.MM.yyyy hh:mm:ss ");
     }
     return qsTemp;
 }
