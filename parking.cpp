@@ -8,6 +8,7 @@ using namespace std;
 Parking::Parking(QObject *parent) : QObject(parent)
 {
 
+
 }
 
 int Parking::size()
