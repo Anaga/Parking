@@ -73,7 +73,7 @@ void TestParkingTest::testCaseAddWrongCarsNumbers()
 
     QVERIFY2( parking.add_car(regNumb)==0, "Adding car seccesfully with long reg number");
 
-    regNumb = "DE45894448";
+    regNumb = "DE4588";
     QVERIFY2( parking.add_car(regNumb)==0, "Adding car seccesfully with short reg number");
 
 
