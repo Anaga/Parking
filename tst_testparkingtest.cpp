@@ -82,7 +82,7 @@ void TestParkingTest::testCaseAddWrongCarsNumbers()
     QVERIFY2( parking.size()==0, "Empty parking is not empty!");
 
     QEXPECT_FAIL("", "Will fix in the next release", Continue);
-    regNumb = "ABC-12";
+    regNumb = "ABC-124";
     QVERIFY2( parking.add_car(regNumb)==0, "Adding car seccesfully with minus sign reg number");
     regNumb = "abcdef";
     QVERIFY2( parking.add_car(regNumb)==0, "Adding car seccesfully with small letters reg number");
