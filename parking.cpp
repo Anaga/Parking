@@ -23,13 +23,16 @@ int Parking::max_size()
 
 int Parking::add_car(QString regNumber)
 {
-    if (regNumber.length()!=6 ) return 0;
+    if (regNumber.length()!=6 ) {
+        qDebug() << "regNumber "<< regNumber <<" can't be save to parking list!";
+        return 0;
+        }
 
     car newCar;
     newCar.regNumber=regNumber;
     m_parking_list.append(newCar);
     m_current_size = m_parking_list.size();
-
+    qDebug() << "regNumber "<< regNumber <<" save to parking list!";
     return 1;
 }
 
