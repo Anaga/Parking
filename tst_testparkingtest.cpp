@@ -67,7 +67,7 @@ void TestParkingTest::testCaseAddAndDeleteTwoCars()
 
 void TestParkingTest::testCaseAddWrongCarsNumbers()
 {
-    QString regNumb = "ABC1234";
+    QString regNumb = "ABC123456";
 
     Parking parking;
 
