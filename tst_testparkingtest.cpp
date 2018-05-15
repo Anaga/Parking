@@ -107,13 +107,26 @@ void TestParkingTest::testCaseAddWrongCarsNumbers()
 
     qDebug() << " print_parking_list have this value: "<< parking.print_parking_list();
 
-    QEXPECT_FAIL("", "Will fix in the next release", Continue);
     regNumb = "+-+-+-";
     QVERIFY2( parking.add_car(regNumb)==0, "Adding car seccesfully with +-+-+- reg number");
 
-    QEXPECT_FAIL("", "Will fix in the next release", Continue);
     regNumb = "abcdef";
     QVERIFY2( parking.add_car(regNumb)==0, "Adding car seccesfully with small letters reg number");
+
+    regNumb = "123GFR";
+    QVERIFY2( parking.add_car(regNumb)==0, "Adding car seccesfully with reg number 123GFR");
+
+    regNumb = "DREGFR";
+    QVERIFY2( parking.add_car(regNumb)==0, "Adding car seccesfully with reg number DREGFR");
+
+    regNumb = "ABCI23";
+    QVERIFY2( parking.add_car(regNumb)==0, "Adding car seccesfully with reg number ABCI23");
+
+    regNumb = "ABc123";
+    QVERIFY2( parking.add_car(regNumb)==0, "Adding car seccesfully with reg number ABc123");
+
+
+
 }
 
 void TestParkingTest::testCaseGetCars()

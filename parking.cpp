@@ -24,10 +24,30 @@ int Parking::max_size()
 
 int Parking::add_car(QString regNumber)
 {
+    /*QRegExp rx_numbers ("[^0-9]");
+       QRegExp rx_letters ("[^A-Z]");
+       QString numbers = regNumber.right(3);
+       QString letters = regNumber.left(3);
+       if(numbers.contains(rx_numbers)&&letters.contains(rx_letters)){
+           car newCar;
+           newCar.regNumber=regNumber;
+           m_parking_list.append(newCar);
+           m_current_size = m_parking_list.size();
+           return 1;
+       }
+       else return 0;*/
+
     if (regNumber.length()!=6 ) {
         qDebug() << "regNumber "<< regNumber <<" can't be save to parking list!";
         return 0;
         }
+    QRegExp rx3l3d("[A-Z][A-Z][A-Z][0-9][0-9][0-9]");
+
+    if (rx3l3d.exactMatch(regNumber) == false){
+        qDebug() << "regNumber "<< regNumber <<"not exactMatch 3LETERS 3 numbers!";
+        return 0;
+    }
+    qDebug() << "regNumber "<< regNumber <<" exactMatch 3LETERS 3 numbers!";
 
     car newCar;
     newCar.enterTime = QDateTime::currentDateTime();
