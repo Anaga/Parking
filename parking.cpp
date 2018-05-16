@@ -24,35 +24,35 @@ int Parking::max_size()
 
 int Parking::add_car(QString regNumber)
 {
-    if (m_current_size!=m_parking_max){
-
-        if (regNumber.length()==6 ) {
-
-            QRegExp rx_numbers ("[0-9]");
-            QRegExp rx_letters ("[A-Z]");
-            QString numbers = regNumber.right(3);
-            QString letters = regNumber.left(3);
-
-            if(numbers.contains(rx_numbers)&&letters.contains(rx_letters)){
-
-               if (is_car_exist(regNumber)){
-                   return 0;
-                   qDebug() << "regNumber "<< regNumber <<" can't be save to parking list!, regNumber exist in parking list";
-               }
-               else{
-                   car newCar;
-                   newCar.regNumber=regNumber;
-                   m_parking_list.append(newCar);
-                   m_current_size = m_parking_list.size();
-                   qDebug() << "regNumber "<< regNumber <<" save to parking list!";
-                   return 1;
-               }
-            }
-            else return 0; qDebug() << "regNumber "<< regNumber <<" can't be save to parking list!,wrong regNumber";
-        }
-        else return 0; qDebug() << "regNumber "<< regNumber <<" can't be save to parking list!, regNumber have more than 6 characters";
+    if (m_current_size>=m_parking_max){
+        qDebug() << "regNumber "<< regNumber <<" can't be save to parking list! Parking lot is full";
+        return 0;
     }
-    else return 0; qDebug() << "regNumber "<< regNumber <<" can't be save to parking list!, parking is full";
+
+    if (regNumber.length()!=6 ) {
+        qDebug() << "regNumber "<< regNumber <<" can't be save to parking list! Reg number too long";
+        return 0;
+    }
+
+    QRegExp rx_RegNumber ("[A-Z][A-Z][A-Z][0-9][0-9][0-9]");
+
+    if (! rx_RegNumber.exactMatch(regNumber)){
+        qDebug() << "regNumber "<< regNumber <<" can't be save to parking list!, wrong format";
+        return 0;
+    }
+
+    if (is_car_exist(regNumber)){
+        qDebug() << "regNumber "<< regNumber <<" can't be save to parking list!, regNumber exist in parking list";
+        return 0;
+    }
+
+    car newCar;
+    newCar.regNumber=regNumber;
+    m_parking_list.append(newCar);
+    m_current_size = m_parking_list.size();
+    qDebug() << "regNumber "<< regNumber <<" save to parking list!";
+    return 1;
+
 }
 
 int Parking::remove_car(QString regNumber)

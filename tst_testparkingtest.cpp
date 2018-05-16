@@ -115,6 +115,10 @@ void TestParkingTest::testCaseAddWrongCarsNumbers()
 
     regNumb = "abcdef";
     QVERIFY2( parking.add_car(regNumb)==0, "Adding car seccesfully with small letters reg number");
+
+    regNumb = "aAcd2f";
+    QVERIFY2( parking.add_car(regNumb)==0, "Adding car seccesfully with small letters reg number");
+
 }
 
 void TestParkingTest::testCaseGetCars()
