@@ -16,6 +16,8 @@ private Q_SLOTS:
     void testCaseAddWrongCarsNumbers();
     void testCaseIsCarOnEmptyParking();
     void testCaseGetCars();
+    void testCaseTryToAddMoreThan25Cars();
+    void testCaseAddSameCars();
 };
 
 TestParkingTest::TestParkingTest()
@@ -107,13 +109,16 @@ void TestParkingTest::testCaseAddWrongCarsNumbers()
 
     qDebug() << " print_parking_list have this value: "<< parking.print_parking_list();
 
-    QEXPECT_FAIL("", "Will fix in the next release", Continue);
     regNumb = "+-+-+-";
     QVERIFY2( parking.add_car(regNumb)==0, "Adding car seccesfully with +-+-+- reg number");
+    qDebug() << " print_parking_list have this value: "<< parking.print_parking_list();
 
-    QEXPECT_FAIL("", "Will fix in the next release", Continue);
     regNumb = "abcdef";
     QVERIFY2( parking.add_car(regNumb)==0, "Adding car seccesfully with small letters reg number");
+
+    regNumb = "aAcd2f";
+    QVERIFY2( parking.add_car(regNumb)==0, "Adding car seccesfully with small letters reg number");
+
 }
 
 void TestParkingTest::testCaseGetCars()
@@ -138,11 +143,29 @@ void TestParkingTest::testCaseGetCars()
     testCar = parking.get_car_by_number("BBC123");
     qDebug() << " testCar.regNumber " << testCar.regNumber;
 
-    QVERIFY2("No car" ==testCar.regNumber, "test car not *No car*, shall be ukniw");
-
-
-
+    QVERIFY2("No car" ==testCar.regNumber, "test car not *No car*, shall be uknow");
 }
+
+void TestParkingTest::testCaseTryToAddMoreThan25Cars()
+{
+    Parking parking;
+    QString regNumb = "ABC0%1";
+    QString regTeml = "ABC0%1";
+
+    for (int i=0; i<40; i++){
+        regNumb = regTeml.arg(i);
+        parking.add_car(regNumb);
+        if (i>35) QVERIFY2( parking.add_car(regNumb)==0, "Impossible to add more cars than places in parking!");
+    }
+}
+
+void TestParkingTest::testCaseAddSameCars(){
+    Parking parking;
+    QString regNumb = "ABC123";
+    QVERIFY2(parking.add_car(regNumb)== true, "Car should be added to parking");
+    QVERIFY2(parking.add_car(regNumb)== false, "Impossible to add the same car");
+}
+
 
 
 QTEST_APPLESS_MAIN(TestParkingTest)
