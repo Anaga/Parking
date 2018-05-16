@@ -149,58 +149,14 @@ void TestParkingTest::testCaseGetCars()
 void TestParkingTest::testCaseTryToAddMoreThan25Cars()
 {
     Parking parking;
-    QString regNumb = "ABC001";
-    parking.add_car(regNumb);
-    regNumb = "ABC002";
-    parking.add_car(regNumb);
-    regNumb = "ABC003";
-    parking.add_car(regNumb);
-    regNumb = "ABC004";
-    parking.add_car(regNumb);
-    regNumb = "ABC005";
-    parking.add_car(regNumb);
-    regNumb = "ABC006";
-    parking.add_car(regNumb);
-    regNumb = "ABC007";
-    parking.add_car(regNumb);
-    regNumb = "ABC008";
-    parking.add_car(regNumb);
-    regNumb = "ABC009";
-    parking.add_car(regNumb);
-    regNumb = "ABC010";
-    parking.add_car(regNumb);
-    regNumb = "ABC011";
-    parking.add_car(regNumb);
-    regNumb = "ABC012";
-    parking.add_car(regNumb);
-    regNumb = "ABC013";
-    parking.add_car(regNumb);
-    regNumb = "ABC014";
-    parking.add_car(regNumb);
-    regNumb = "ABC015";
-    parking.add_car(regNumb);
-    regNumb = "ABC016";
-    parking.add_car(regNumb);
-    regNumb = "ABC017";
-    parking.add_car(regNumb);
-    regNumb = "ABC018";
-    parking.add_car(regNumb);
-    regNumb = "ABC019";
-    parking.add_car(regNumb);
-    regNumb = "ABC020";
-    parking.add_car(regNumb);
-    regNumb = "ABC021";
-    parking.add_car(regNumb);
-    regNumb = "ABC022";
-    parking.add_car(regNumb);
-    regNumb = "ABC023";
-    parking.add_car(regNumb);
-    regNumb = "ABC024";
-    parking.add_car(regNumb);
-    regNumb = "ABC025";
-    parking.add_car(regNumb);
-    regNumb = "ABC026";
-    QVERIFY2( parking.add_car(regNumb)==0, "Impossible to add more cars than places in parking!");
+    QString regNumb = "ABC0%1";
+    QString regTeml = "ABC0%1";
+
+    for (int i=0; i<40; i++){
+        regNumb = regTeml.arg(i);
+        parking.add_car(regNumb);
+        if (i>35) QVERIFY2( parking.add_car(regNumb)==0, "Impossible to add more cars than places in parking!");
+    }
 }
 
 void TestParkingTest::testCaseAddSameCars(){
