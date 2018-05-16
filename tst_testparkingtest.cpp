@@ -16,6 +16,8 @@ private Q_SLOTS:
     void testCaseAddWrongCarsNumbers();
     void testCaseIsCarOnEmptyParking();
     void testCaseGetCars();
+    void testCaseTryToAddMoreThan25Cars();
+    void testCaseAddSameCars();
 };
 
 TestParkingTest::TestParkingTest()
@@ -107,11 +109,10 @@ void TestParkingTest::testCaseAddWrongCarsNumbers()
 
     qDebug() << " print_parking_list have this value: "<< parking.print_parking_list();
 
-    QEXPECT_FAIL("", "Will fix in the next release", Continue);
     regNumb = "+-+-+-";
     QVERIFY2( parking.add_car(regNumb)==0, "Adding car seccesfully with +-+-+- reg number");
+    qDebug() << " print_parking_list have this value: "<< parking.print_parking_list();
 
-    QEXPECT_FAIL("", "Will fix in the next release", Continue);
     regNumb = "abcdef";
     QVERIFY2( parking.add_car(regNumb)==0, "Adding car seccesfully with small letters reg number");
 }
@@ -138,10 +139,71 @@ void TestParkingTest::testCaseGetCars()
     testCar = parking.get_car_by_number("BBC123");
     qDebug() << " testCar.regNumber " << testCar.regNumber;
 
-    QVERIFY2("No car" ==testCar.regNumber, "test car not *No car*, shall be ukniw");
+    QVERIFY2("No car" ==testCar.regNumber, "test car not *No car*, shall be uknow");
+}
 
+void TestParkingTest::testCaseTryToAddMoreThan25Cars()
+{
+    Parking parking;
+    QString regNumb = "ABC001";
+    parking.add_car(regNumb);
+    regNumb = "ABC002";
+    parking.add_car(regNumb);
+    regNumb = "ABC003";
+    parking.add_car(regNumb);
+    regNumb = "ABC004";
+    parking.add_car(regNumb);
+    regNumb = "ABC005";
+    parking.add_car(regNumb);
+    regNumb = "ABC006";
+    parking.add_car(regNumb);
+    regNumb = "ABC007";
+    parking.add_car(regNumb);
+    regNumb = "ABC008";
+    parking.add_car(regNumb);
+    regNumb = "ABC009";
+    parking.add_car(regNumb);
+    regNumb = "ABC010";
+    parking.add_car(regNumb);
+    regNumb = "ABC011";
+    parking.add_car(regNumb);
+    regNumb = "ABC012";
+    parking.add_car(regNumb);
+    regNumb = "ABC013";
+    parking.add_car(regNumb);
+    regNumb = "ABC014";
+    parking.add_car(regNumb);
+    regNumb = "ABC015";
+    parking.add_car(regNumb);
+    regNumb = "ABC016";
+    parking.add_car(regNumb);
+    regNumb = "ABC017";
+    parking.add_car(regNumb);
+    regNumb = "ABC018";
+    parking.add_car(regNumb);
+    regNumb = "ABC019";
+    parking.add_car(regNumb);
+    regNumb = "ABC020";
+    parking.add_car(regNumb);
+    regNumb = "ABC021";
+    parking.add_car(regNumb);
+    regNumb = "ABC022";
+    parking.add_car(regNumb);
+    regNumb = "ABC023";
+    parking.add_car(regNumb);
+    regNumb = "ABC024";
+    parking.add_car(regNumb);
+    regNumb = "ABC025";
+    parking.add_car(regNumb);
+    regNumb = "ABC026";
+    QVERIFY2( parking.add_car(regNumb)==0, "Impossible to add more cars than places in parking!");
+}
 
-
+void TestParkingTest::testCaseAddSameCars(){
+    Parking parking;
+    QString regNumb = "ABC123";
+    QVERIFY2(parking.add_car(regNumb)== true, "Car should be added to parking");
+    QVERIFY2(parking.add_car(regNumb)== false, "Impossible to add the same car");
 }
 
 
