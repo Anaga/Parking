@@ -29,6 +29,12 @@ int Parking::add_car(QString regNumber)
         return 0;
         }
 
+    QRegExp rx_regNumber ("[A-Z][A-Z][A-Z][0-9][0-9][0-9]");
+    if(!rx_regNumber.exactMatch(regNumber)){
+        qDebug() << "regNumber "<< regNumber <<" can't be saved to parking list!, wrong regNumber";
+        return 0;
+    }
+
     car newCar;
     newCar.enterTime = QDateTime::currentDateTime();
     newCar.regNumber=regNumber;
