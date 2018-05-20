@@ -16,10 +16,47 @@ private Q_SLOTS:
     void testCaseAddWrongCarsNumbers();
     void testCaseIsCarOnEmptyParking();
     void testCaseGetCars();
+    void testCaseSetTime();
 };
 
 TestParkingTest::TestParkingTest()
 {
+}
+
+void TestParkingTest::testCaseSetTime()
+{
+    Parking parking;  
+    QString regNumb = "ABC589";
+    
+    QVERIFY2( parking.add_car(regNumb), "Adding car with number 'ABC589' unseccesfully");
+    qDebug() <<  parking.print_parking_list();
+    QVERIFY2( parking.print_parking_list().contains(regNumb), "Parking lot not contain car with ABC589");
+    QVERIFY2( parking.size()==1, "parking size is not 1!");
+
+    Car carToTest;    
+    carToTest = parking.get_car_by_number(regNumb);
+    
+    QDateTime dt;
+    dt = carToTest.enterTime;
+    
+    qDebug() << "car with number " << carToTest.regNumber << "was park in "<< dt.toString(Qt::ISODate);
+    
+    qDebug() << "wait 15 sec";
+    QTest::qWait(1500);
+    
+    dt =  QDateTime::currentDateTime();
+    parking.setParkingTime(regNumb, dt);
+    
+    Car carWithNewTime;    
+    carWithNewTime = parking.get_car_by_number(regNumb); 
+    dt = carWithNewTime.enterTime;
+        
+    qDebug() << "car with number " << carWithNewTime.regNumber << "was park in "<< dt.toString(Qt::ISODate);
+    
+    QVERIFY2( carToTest.enterTime!=carWithNewTime.enterTime, "parking time shall be diferent!");
+    
+    
+
 }
 
 void TestParkingTest::testCaseEmptyParking()
@@ -37,7 +74,7 @@ void TestParkingTest::testCaseAddAndDeleteOneCar()
 
     QVERIFY2( parking.add_car(regNumb), "Adding car unseccesfully");
     qDebug() <<  parking.print_parking_list();
-    QVERIFY2( parking.print_parking_list().contains(regNumb), "Parking list is not ABC123");
+    QVERIFY2( parking.print_parking_list().contains(regNumb), "Parking list is not ABC589");
     QVERIFY2( parking.size()==1, "parking size is not 1!");
 
     QVERIFY2( parking.remove_car("ABC589"), "Deliting car unseccesfully");
