@@ -24,19 +24,6 @@ int Parking::max_size()
 
 int Parking::add_car(QString regNumber)
 {
-    /*QRegExp rx_numbers ("[^0-9]");
-       QRegExp rx_letters ("[^A-Z]");
-       QString numbers = regNumber.right(3);
-       QString letters = regNumber.left(3);
-       if(numbers.contains(rx_numbers)&&letters.contains(rx_letters)){
-           car newCar;
-           newCar.regNumber=regNumber;
-           m_parking_list.append(newCar);
-           m_current_size = m_parking_list.size();
-           return 1;
-       }
-       else return 0;*/
-
     if (regNumber.length()!=6 ) {
         qDebug() << "regNumber "<< regNumber <<" can't be save to parking list!";
         return 0;
@@ -56,18 +43,7 @@ int Parking::add_car(QString regNumber)
     m_current_size = m_parking_list.size();
     qDebug() << "regNumber "<< regNumber <<" save to parking list!";
     return 1;
-    /*QRegExp rx_numbers ("[^0-9]");
-       QRegExp rx_letters ("[^A-Z]");
-       QString numbers = regNumber.right(3);
-       QString letters = regNumber.left(3);
-       if(numbers.contains(rx_numbers)&&letters.contains(rx_letters)){
-           car newCar;
-           newCar.regNumber=regNumber;
-           m_parking_list.append(newCar);
-           m_current_size = m_parking_list.size();
-           return 1;
-       }
-       else return 0;*/
+
 }
 
 int Parking::remove_car(QString regNumber)
@@ -126,3 +102,21 @@ car Parking::get_car_by_number(QString regNumber)
     curCar.regNumber= "No car";
     return curCar;
 }
+
+bool Parking::setParkingTime(QString regNumber, QDateTime enterTime)
+{
+    if (!is_car_exist(regNumber)){
+        return false;
+    }
+    
+    for (int i=0; i<m_current_size; i++){
+        if (m_parking_list[i].regNumber==regNumber){
+            m_parking_list[i].enterTime = enterTime;
+            
+            return true;
+        }
+    }
+    return false;
+    
+}
+
