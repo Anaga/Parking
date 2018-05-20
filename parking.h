@@ -31,6 +31,7 @@ public:
     QString print_parking_list();
     bool is_car_exist(QString regNumber);
     car get_car_by_number(QString regNumber);
+    bool setParkingTime(QString regNumber, QDateTime enterTime);
 
 
 
