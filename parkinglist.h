@@ -3,6 +3,7 @@
 
 #include <QAbstractListModel>
 #include <QStringList>
+#include <QDebug>
 
 class ParkingList : public QAbstractListModel
 {
@@ -35,6 +36,7 @@ public:
     // Remove data:
     bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
 
+    bool isGoodNumber(QString regNumber);
 private:
     QStringList qslParking;
 };

@@ -4,6 +4,8 @@
 #include "parkinglist.h"
 #include <QMainWindow>
 
+#include <QDebug>
+
 namespace Ui {
 class MainWindow;
 }
@@ -20,6 +22,10 @@ private slots:
     void on_pushButton_Add_clicked();
 
     void on_pushButton_Delete_clicked();
+
+    void on_listView_clicked(const QModelIndex &index);
+
+    void on_listView_doubleClicked(const QModelIndex &index);
 
 private:
     Ui::MainWindow *ui;

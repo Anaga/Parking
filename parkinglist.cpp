@@ -57,15 +57,18 @@ Qt::ItemFlags ParkingList::flags(const QModelIndex &index) const
     if (!index.isValid())
         return Qt::NoItemFlags;
 
-    return Qt::ItemIsEditable | Qt::ItemIsEnabled | Qt::ItemIsSelectable ;
+    return Qt::ItemIsEnabled | Qt::ItemIsSelectable ;
 
 
 }
 
 bool ParkingList::append(QString regNumber)
 {
-    qslParking.prepend(regNumber);
-    return insertRow(0);
+    if (isGoodNumber(regNumber)) {
+        qslParking.prepend(regNumber);
+        return insertRow(0);
+    }
+
 }
 
 
@@ -80,10 +83,18 @@ bool ParkingList::insertRows(int row, int count, const QModelIndex &parent)
 
 bool ParkingList::remove(QString regNumber)
 {
+    qDebug() << "ParkingList::remove QString regNumber is" << regNumber;
     int index = qslParking.indexOf(regNumber);
+    qDebug() << "ParkingList::remove indexOf is" << index;
     if (index == -1 ) return false;
+
+    qDebug() << "ParkingList::remove qslParking size " << qslParking.size();
+
     qslParking.removeAt(index);
-    return removeRow(index);
+
+    qDebug() << "ParkingList::remove qslParking size " << qslParking.size();
+
+    return removeRow(0);
 
 }
 bool ParkingList::removeRows(int row, int count, const QModelIndex &parent)
@@ -92,3 +103,10 @@ bool ParkingList::removeRows(int row, int count, const QModelIndex &parent)
     endRemoveRows();
     return true;
 }
+
+bool ParkingList::isGoodNumber(QString regNumber)
+{
+    if (regNumber.length()== 6) return true;
+    return false;
+}
+
