@@ -16,6 +16,11 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+private slots:
+    void on_pushButton_Add_clicked();
+
+    void on_pushButton_Delete_clicked();
+
 private:
     Ui::MainWindow *ui;
     ParkingList *parkModel;

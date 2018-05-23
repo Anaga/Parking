@@ -40,9 +40,14 @@ QVariant ParkingList::data(const QModelIndex &index, int role) const
 bool ParkingList::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     if (data(index, role) != value) {
-        // FIXME: Implement me!
-        emit dataChanged(index, index, QVector<int>() << role);
-        return true;
+        if (role == Qt::EditRole){
+            QString qsVal = value.toString();
+            qslParking.replace(index.row(), qsVal);
+
+            emit dataChanged(index, index, QVector<int>() << role);
+            return true;
+        }
+
     }
     return false;
 }
@@ -52,19 +57,38 @@ Qt::ItemFlags ParkingList::flags(const QModelIndex &index) const
     if (!index.isValid())
         return Qt::NoItemFlags;
 
-    return Qt::ItemIsEditable; // FIXME: Implement me!
+    return Qt::ItemIsEditable | Qt::ItemIsEnabled | Qt::ItemIsSelectable ;
+
+
 }
+
+bool ParkingList::append(QString regNumber)
+{
+    qslParking.prepend(regNumber);
+    return insertRow(0);
+}
+
+
 
 bool ParkingList::insertRows(int row, int count, const QModelIndex &parent)
 {
     beginInsertRows(parent, row, row + count - 1);
-    // FIXME: Implement me!
     endInsertRows();
+    return true;
 }
 
+
+bool ParkingList::remove(QString regNumber)
+{
+    int index = qslParking.indexOf(regNumber);
+    if (index == -1 ) return false;
+    qslParking.removeAt(index);
+    return removeRow(index);
+
+}
 bool ParkingList::removeRows(int row, int count, const QModelIndex &parent)
 {
     beginRemoveRows(parent, row, row + count - 1);
-    // FIXME: Implement me!
     endRemoveRows();
+    return true;
 }

@@ -19,3 +19,14 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::on_pushButton_Add_clicked()
+{
+    parkModel->append(ui->lineEdit->text());
+
+}
+
+void MainWindow::on_pushButton_Delete_clicked()
+{
+    parkModel->remove(ui->lineEdit->text());
+}

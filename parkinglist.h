@@ -26,6 +26,10 @@ public:
     Qt::ItemFlags flags(const QModelIndex& index) const override;
 
     // Add data:
+    bool append(QString regNumber);
+
+    bool remove(QString regNumber);
+
     bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
 
     // Remove data:
