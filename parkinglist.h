@@ -27,7 +27,7 @@ public:
     Qt::ItemFlags flags(const QModelIndex& index) const override;
 
     // Add data:
-    bool append(QString regNumber);
+    bool append(QString regNumber, QString time);
 
     bool remove(QString regNumber);
 

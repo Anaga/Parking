@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     parkModel = new ParkingList();
 
     QStringList myTestList;
-    myTestList << "ABC123" << "bcd234" << "aaa111" << "qas234"<<"sdfpdas";
+    myTestList << "ABC123 20:05" << "bcd234  20:25" << "aaa111 20:08" << "qas234"<<"sdfpdas";
     myTestList << "asdf" << "sdfgedfg";
     parkModel->setStringList(myTestList);
     ui->listView->setModel(parkModel);
@@ -23,7 +23,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_Add_clicked()
 {
-    parkModel->append(ui->lineEdit->text());
+    parkModel->append(ui->lineEdit->text(), ui->label_Time->text());
 }
 
 void MainWindow::on_pushButton_Delete_clicked()

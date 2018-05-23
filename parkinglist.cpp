@@ -62,10 +62,10 @@ Qt::ItemFlags ParkingList::flags(const QModelIndex &index) const
 
 }
 
-bool ParkingList::append(QString regNumber)
+bool ParkingList::append(QString regNumber, QString time)
 {
     if (isGoodNumber(regNumber)) {
-        qslParking.prepend(regNumber);
+        qslParking.prepend(regNumber+" "+time);
         return insertRow(0);
     }
 
