@@ -40,3 +40,10 @@ Format shall be 3 capital leters from A-Z, and then 3 numbrs.
 
 
 Write a new test case in file tst_testparkingtest.cpp to VERIFY fuction add_car.
+
+Link MVC Model and Qt Framework
+https://www.codeguru.com/cpp/cpp/implementing-an-mvc-model-with-the-qt-c-framework.html
+
+Model/View Programming
+http://doc.qt.io/archives/qt-4.8/model-view-programming.html
+
