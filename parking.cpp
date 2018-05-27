@@ -28,6 +28,13 @@ int Parking::add_car(QString regNumber)
         qDebug() << "regNumber "<< regNumber <<" can't be save to parking list!";
         return 0;
         }
+    QRegExp rx3l3d("[A-Z][A-Z][A-Z][0-9][0-9][0-9]");
+
+    if (rx3l3d.exactMatch(regNumber) == false){
+        qDebug() << "regNumber "<< regNumber <<"not exactMatch 3LETERS 3 numbers!";
+        return 0;
+    }
+    qDebug() << "regNumber "<< regNumber <<" exactMatch 3LETERS 3 numbers!";
 
     QRegExp rx_regNumber ("[A-Z][A-Z][A-Z][0-9][0-9][0-9]");
     if(!rx_regNumber.exactMatch(regNumber)){
@@ -41,7 +48,8 @@ int Parking::add_car(QString regNumber)
     m_parking_list.append(newCar);
     m_current_size = m_parking_list.size();
     qDebug() << "regNumber "<< regNumber <<" save to parking list!";
-    return 1;}
+
+    return 1;
 }
 
 int Parking::remove_car(QString regNumber)
@@ -100,3 +108,21 @@ car Parking::get_car_by_number(QString regNumber)
     curCar.regNumber= "No car";
     return curCar;
 }
+
+bool Parking::setParkingTime(QString regNumber, QDateTime enterTime)
+{
+    if (!is_car_exist(regNumber)){
+        return false;
+    }
+    
+    for (int i=0; i<m_current_size; i++){
+        if (m_parking_list[i].regNumber==regNumber){
+            m_parking_list[i].enterTime = enterTime;
+            
+            return true;
+        }
+    }
+    return false;
+    
+}
+
