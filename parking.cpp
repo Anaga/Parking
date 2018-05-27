@@ -34,26 +34,14 @@ int Parking::add_car(QString regNumber)
         qDebug() << "regNumber "<< regNumber <<" can't be saved to parking list!, wrong regNumber";
         return 0;
     }
-
+    else{
     car newCar;
     newCar.enterTime = QDateTime::currentDateTime();
     newCar.regNumber=regNumber;
     m_parking_list.append(newCar);
     m_current_size = m_parking_list.size();
     qDebug() << "regNumber "<< regNumber <<" save to parking list!";
-    return 1;
-    /*QRegExp rx_numbers ("[^0-9]");
-       QRegExp rx_letters ("[^A-Z]");
-       QString numbers = regNumber.right(3);
-       QString letters = regNumber.left(3);
-       if(numbers.contains(rx_numbers)&&letters.contains(rx_letters)){
-           car newCar;
-           newCar.regNumber=regNumber;
-           m_parking_list.append(newCar);
-           m_current_size = m_parking_list.size();
-           return 1;
-       }
-       else return 0;*/
+    return 1;}
 }
 
 int Parking::remove_car(QString regNumber)
