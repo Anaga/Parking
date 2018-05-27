@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QTime>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -14,6 +16,10 @@ MainWindow::MainWindow(QWidget *parent) :
     myTestList << "asdf" << "sdfgedfg";
     parkModel->setStringList(myTestList);
     ui->listView->setModel(parkModel);
+
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(TimerTick()));
+    timer->start(1000);
 }
 
 MainWindow::~MainWindow()
@@ -51,4 +57,12 @@ void MainWindow::on_listView_doubleClicked(const QModelIndex &index)
 
 
     parkModel->remove(qsVal);
+}
+
+void MainWindow::TimerTick()
+{
+    QTime cTime = QTime::currentTime();
+    QString parkingTime = cTime.toString("hh:mm:ss");
+    ui->label_Time->setText(parkingTime);
+
 }
