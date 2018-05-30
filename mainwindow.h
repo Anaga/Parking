@@ -5,6 +5,7 @@
 #include <QMainWindow>
 
 #include <QDebug>
+#include <QTimer>
 
 namespace Ui {
 class MainWindow;
@@ -27,9 +28,12 @@ private slots:
 
     void on_listView_doubleClicked(const QModelIndex &index);
 
+    void TimerTick();
+
 private:
     Ui::MainWindow *ui;
     ParkingList *parkModel;
+    QTimer *timer;
 };
 
 #endif // MAINWINDOW_H

@@ -36,14 +36,20 @@ int Parking::add_car(QString regNumber)
     }
     qDebug() << "regNumber "<< regNumber <<" exactMatch 3LETERS 3 numbers!";
 
+    QRegExp rx_regNumber ("[A-Z][A-Z][A-Z][0-9][0-9][0-9]");
+    if(!rx_regNumber.exactMatch(regNumber)){
+        qDebug() << "regNumber "<< regNumber <<" can't be saved to parking list!, wrong regNumber";
+        return 0;
+    }
+    else{
     car newCar;
     newCar.enterTime = QDateTime::currentDateTime();
     newCar.regNumber=regNumber;
     m_parking_list.append(newCar);
     m_current_size = m_parking_list.size();
     qDebug() << "regNumber "<< regNumber <<" save to parking list!";
-    return 1;
 
+    return 1;
 }
 
 int Parking::remove_car(QString regNumber)
