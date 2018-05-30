@@ -48,6 +48,7 @@ int Parking::add_car(QString regNumber)
     m_parking_list.append(newCar);
     m_current_size = m_parking_list.size();
     qDebug() << "regNumber "<< regNumber <<" save to parking list!";
+    qDebug() << "enterTime is "<< newCar.enterTime.toString("HH:mm:ss");
 
     return 1;
 }

@@ -1,6 +1,8 @@
 #include "parkingtable.h"
 #include "parking.h"
 
+#include <QDebug>
+
 ParkingTable::ParkingTable(QObject *parent)
     : QAbstractTableModel(parent)
 {
@@ -31,7 +33,6 @@ int ParkingTable::columnCount(const QModelIndex &parent) const
 {
     if (parent.isValid())
         return 0;
-
     return 2;
 }
 
@@ -42,9 +43,9 @@ QVariant ParkingTable::data(const QModelIndex &index, int role) const
 
     switch (role) {
     case Qt::DisplayRole:
-
         int row = index.row();
         car c = parking->get_car_by_index(row);
+
         if (index.column()==0) return c.regNumber;
         if (index.column()==1) return c.enterTime.toString("hh:mm:ss");
         break;
@@ -84,5 +85,15 @@ bool ParkingTable::removeRows(int row, int count, const QModelIndex &parent)
     beginRemoveRows(parent, row, row + count - 1);
     endRemoveRows();
     return true;
+}
+
+bool ParkingTable::appendCar(QString regNumber)
+{
+    if (parking->add_car(regNumber) == 1 ){
+        qDebug() << "appendCar secsessful" ;
+        return insertRow(0);
+    }
+    qDebug() << "can´t appendCar with number " << regNumber ;
+    return false;
 }
 
